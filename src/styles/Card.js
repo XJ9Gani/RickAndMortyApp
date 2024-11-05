@@ -8,8 +8,8 @@ export const CardContainer = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: ${mobileSize}px) {
-    width: 200px;
-    height: 200px;
+    width: 164px;
+    height: 192px;
   }
 `;
 

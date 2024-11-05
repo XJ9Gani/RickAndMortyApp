@@ -1,8 +1,8 @@
 export const Icon = {
   charIcon: (
     <svg
-      width="40"
-      height="40"
+      width="30"
+      height="30"
       viewBox="0 0 25 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -17,8 +17,8 @@ export const Icon = {
   ),
   locationIcon: (
     <svg
-      width="40"
-      height="40"
+      width="30"
+      height="30"
       viewBox="0 0 26 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -39,8 +39,8 @@ export const Icon = {
   ),
   episodeIcon: (
     <svg
-      width="40"
-      height="40"
+      width="30"
+      height="30"
       viewBox="0 0 25 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -63,8 +63,8 @@ export const Icon = {
   ),
   settingsIcon: (
     <svg
-      width="40"
-      height="40"
+      width="30"
+      height="30"
       viewBox="0 0 25 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -27,7 +27,6 @@ export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   @media (max-width: 768px) {
-    width: 375px;
     padding: 5px;
     justify-content: center;
   }
@@ -51,10 +50,10 @@ export const NavItem = styled.span`
 
 export const IconStyle = styled.span`
   @media (max-width: 768px) {
-    margin: 0;
+    margin: auto;
     border: 1px solid white;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     padding: 10px;
     margin-bottom: 10px;
