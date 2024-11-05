@@ -20,6 +20,7 @@ export const ListContainer = styled.div`
   @media (max-width: ${mobileSize}px) {
     width: 300px;
     grid-template-columns: 1fr 1fr;
+    margin: auto;
   }
 `;
 export const ListItem = styled.div``;

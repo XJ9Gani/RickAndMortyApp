@@ -56,7 +56,7 @@ export const IconStyle = styled.span`
     height: 30px;
     border-radius: 50%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     background-color: ${(props) =>
       props.variant === "active" ? "red" : "white"};
   }
