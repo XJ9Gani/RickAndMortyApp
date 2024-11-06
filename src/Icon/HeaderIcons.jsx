@@ -1,4 +1,4 @@
-export const Icon = {
+export const HeaderIcons = {
   charIcon: (
     <svg
       width="30"

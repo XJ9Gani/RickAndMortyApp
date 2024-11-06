@@ -9,10 +9,11 @@ export const HeaderStyle = styled.header`
   color: white;
   text-aling: center;
   @media (max-width: 768px) {
+    width: 100%;
     margin-top: 100px;
     position: fixed;
     bottom: 0;
-    height: 60px;
+    heiht: 60px;
   }
 
   @media (min-width: 769px) {
@@ -45,23 +46,5 @@ export const NavItem = styled.span`
 
   @media (min-width: 769px) {
     font-size: 25px;
-  }
-`;
-
-export const IconStyle = styled.span`
-  @media (max-width: 768px) {
-    margin: auto;
-    border: 1px solid white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    padding: 10px;
-    margin-bottom: 15px;
-    background-color: ${(props) =>
-      props.variant === "active" ? "red" : "white"};
-  }
-  @media (min-width: 769px) {
-    margin: auto;
-    border: 1px solid white;
   }
 `;

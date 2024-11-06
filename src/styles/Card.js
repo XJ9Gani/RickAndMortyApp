@@ -9,7 +9,8 @@ export const CardContainer = styled.div`
   align-items: center;
   @media (max-width: ${mobileSize}px) {
     width: 164px;
-    height: 192px;
+    flex-direction: ${(props) => (props.order === "byOne" ? "row" : "column")};
+    height: ${(props) => (props.order === "byOne" ? "74px" : "192px")};
   }
 `;
 
@@ -19,8 +20,8 @@ export const CardImg = styled.img`
   background-color: white;
   border-radius: 50%;
   @media (max-width: ${mobileSize}px) {
-    width: 120px;
-    height: 122px;
+    width: ${(props) => (props.order === "byOne" ? "74px" : "120px")};
+    height: ${(props) => (props.order === "byOne" ? "74px" : "122px")};
   }
 `;
 

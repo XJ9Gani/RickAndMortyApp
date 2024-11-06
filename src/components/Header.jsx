@@ -1,11 +1,8 @@
 import { NavLink } from "react-router-dom";
-import {
-  HeaderStyle,
-  IconStyle,
-  NavContainer,
-  NavItem,
-} from "../styles/Header";
-import { Icon } from "../Icon";
+import { HeaderStyle, NavContainer, NavItem } from "../styles/Header";
+import { HeaderStyleIconStyle } from "../styles/Icon";
+import { HeaderIcons } from "../Icon/HeaderIcons";
+
 import { useCallback } from "react";
 export default function Header() {
   const activeLinkHandler = useCallback(
@@ -34,28 +31,36 @@ export default function Header() {
         <NavContainer>
           <NavLink to="/" style={activeLinkHandler}>
             <NavItem>
-              <IconStyle>{Icon.charIcon}</IconStyle>
+              <HeaderStyleIconStyle>
+                {HeaderIcons.charIcon}
+              </HeaderStyleIconStyle>
               Персонажи
             </NavItem>
           </NavLink>
 
           <NavLink to="/locations" style={activeLinkHandler}>
             <NavItem>
-              <IconStyle>{Icon.locationIcon}</IconStyle>
+              <HeaderStyleIconStyle>
+                {HeaderIcons.locationIcon}
+              </HeaderStyleIconStyle>
               Локации
             </NavItem>
           </NavLink>
 
           <NavLink to="/episodes" style={activeLinkHandler}>
             <NavItem>
-              <IconStyle>{Icon.episodeIcon}</IconStyle>
+              <HeaderStyleIconStyle>
+                {HeaderIcons.episodeIcon}
+              </HeaderStyleIconStyle>
               Эпизоды
             </NavItem>
           </NavLink>
 
           <NavLink to="/" style={activeLinkHandler}>
             <NavItem>
-              <IconStyle>{Icon.settingsIcon}</IconStyle>
+              <HeaderStyleIconStyle>
+                {HeaderIcons.settingsIcon}
+              </HeaderStyleIconStyle>
               Настройки
             </NavItem>
           </NavLink>
