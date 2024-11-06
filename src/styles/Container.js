@@ -25,19 +25,31 @@ export const SimpleContainer = styled.div`
 
 export const BackContainer = styled.div`
   background-color: rgba(11, 30, 45, 1);
+  padding: 10px;
+  min-height: 100vh;
 `;
 
 export const ListContainer = styled.div`
-  margin: 0;
-  margin-bottom: 55px;
+  margin: auto;
+  width: 85%;
+
+  align-items: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   @media (max-width: ${mobileSize}px) {
     width: 300px;
+    margin: auto;
     grid-template-columns: ${(props) =>
       props.order === "byOne" ? "1fr" : "1fr 1fr"};
-    margin: ${(props) => (props.order === "byOne" ? "auto" : "0")};
+    margin-bottom: 60px;
   }
 `;
 export const ListItem = styled.div``;
+
+export const EmptyDataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;

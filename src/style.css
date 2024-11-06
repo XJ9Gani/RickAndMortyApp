@@ -1,4 +1,4 @@
 body {
-  display: grid;
-  text-align: start;
+  align-items: center;
+  justify-content: center;
 }

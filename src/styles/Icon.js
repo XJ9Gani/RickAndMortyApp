@@ -18,11 +18,15 @@ export const HeaderStyleIconStyle = styled.span`
 
 export const CharacterPageIconStyle = styled.span`
   @media (max-width: 768px) {
+    padding: 5px;
+    border-radius: 50%;
     position: absolute;
-    top: 0%;
-    left: 80%;
+    top: -75px;
+    left: 95%;
   }
   @media (min-width: 769px) {
     display: none;
   }
 `;
+
+export const SimpleIcon = styled.span``;

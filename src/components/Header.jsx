@@ -12,7 +12,7 @@ export default function Header() {
             textDecoration: "none",
             color: "rgba(67, 208, 73, 1)",
           }
-        : { textDecoration: "none", color: "" },
+        : { textDecoration: "none", color: "rgba(110, 121, 140, 1)" },
     []
   );
 

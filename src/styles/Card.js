@@ -30,6 +30,7 @@ export const CardImg = styled.img`
 export const CardTitle = styled.h1`
   margin: 1px;
   color: white;
+  font-family: sans-serif;
   @media (max-width: ${mobileSize}px) {
     font-size: 14px;
     width: 151px;
@@ -52,5 +53,11 @@ export const CardBody = styled.div`
   text-align: ${(props) => (props.order === "byOne" ? "start" : "center")};
 `;
 export const SimpleText = styled.h4`
-  font-size: ;
+  font-size: 25px;
+  color: rgba(110, 121, 140, 1);
+  font-family: sans-serif;
+  @media (max-width: ${mobileSize}px) {
+    font-size: ${(props) => props.size || "24px"};
+    width: $ ${(props) => props.width || "100vw"};
+  }
 `;

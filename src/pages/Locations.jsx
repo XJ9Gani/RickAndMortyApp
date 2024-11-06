@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useStore from "../store";
+import { SearchForm } from "../components";
 
 export default function Locations() {
   const { data, loading, error, fetchData } = useStore();
@@ -9,10 +10,13 @@ export default function Locations() {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
   return (
-    <ul>
-      {data.map((el) => (
-        <li key={el.id}>{el.name}</li>
-      ))}
-    </ul>
+    <>
+      <SearchForm title="Поиск Локации" />
+      <ul>
+        {data.map((el) => (
+          <li key={el.id}>{el.name}</li>
+        ))}
+      </ul>
+    </>
   );
 }
