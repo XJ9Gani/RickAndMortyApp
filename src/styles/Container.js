@@ -11,7 +11,9 @@ export const GlobalStyle = createGlobalStyle`
 
 export const SimpleContainer = styled.div`
   @media (max-width: 768px) {
-    position: relative;
+    position: sticky;
+    top: 0;
+    left: 0;
     margin: auto;
     width: ${(props) => props.width || "24px"};
     height: ${(props) => props.height || "24px"};
@@ -26,6 +28,7 @@ export const BackContainer = styled.div`
 `;
 
 export const ListContainer = styled.div`
+  margin: 0;
   margin-bottom: 55px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -34,7 +37,7 @@ export const ListContainer = styled.div`
     width: 300px;
     grid-template-columns: ${(props) =>
       props.order === "byOne" ? "1fr" : "1fr 1fr"};
-    margin: auto;
+    margin: ${(props) => (props.order === "byOne" ? "auto" : "0")};
   }
 `;
 export const ListItem = styled.div``;

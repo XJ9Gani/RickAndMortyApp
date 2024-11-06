@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import useStore from "../store";
 import { ListContainer, SimpleContainer } from "../styles/Container";
-import { CardContainer, CardImg, CardTitle, CardText } from "../styles/Card";
+import {
+  CardContainer,
+  CardImg,
+  CardTitle,
+  CardText,
+  CardBody,
+} from "../styles/Card";
 import { CharacterPageIconStyle } from "../styles/Icon";
 import { CharPageIcon } from "../Icon/CharactePageIcons";
 
@@ -36,8 +42,10 @@ export default function Characters() {
               alt={el.name}
               order={order ? "byOne" : "default"}
             />
-            <CardText variant={el.status}>{el.status}</CardText>
-            <CardTitle>{el.name}</CardTitle>
+            <CardBody order={order ? "byOne" : "default"}>
+              <CardText variant={el.status}>{el.status}</CardText>
+              <CardTitle>{el.name}</CardTitle>
+            </CardBody>
           </CardContainer>
         ))}
       </ListContainer>

@@ -13,7 +13,6 @@ export const HeaderStyleIconStyle = styled.span`
   }
   @media (min-width: 769px) {
     margin: auto;
-    border: 1px solid white;
   }
 `;
 
