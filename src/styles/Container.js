@@ -32,13 +32,12 @@ export const BackContainer = styled.div`
 export const ListContainer = styled.div`
   margin: auto;
   width: 85%;
-
   align-items: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   @media (max-width: ${mobileSize}px) {
-    width: 300px;
+    width: 90%;
     margin: auto;
     grid-template-columns: ${(props) =>
       props.order === "byOne" ? "1fr" : "1fr 1fr"};

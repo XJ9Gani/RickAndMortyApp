@@ -7,6 +7,7 @@ export const CardContainer = styled.div`
   border-radius: 10px;
   background-color: rgba(21, 42, 58, 1);
   @media (max-width: ${mobileSize}px) {
+    margin: auto;
     width: 343px;
     height: 260px;
     flex-direction: "column";
@@ -27,7 +28,7 @@ export const CardBody = styled.div`
 
 export const CardTitle = styled.h1`
   margin: 0;
-  width: 80vw;
+
   font-size: 30px;
   font-family: sans-serif;
   color: white;
