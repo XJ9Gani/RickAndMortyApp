@@ -9,6 +9,7 @@ export const SearchInput = styled.input`
   height: 50px;
   display: block;
   margin: auto;
+  margin-top: 10px;
   margin-bottom: 1%;
   border-radius: 50px;
   border: none;

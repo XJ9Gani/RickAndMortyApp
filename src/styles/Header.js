@@ -4,6 +4,7 @@ const mobileSize = 768;
 export const HeaderStyle = styled.header`
   margin: 0;
   padding: 10px;
+  z-index: 2;
   background-color: ${(props) =>
     props.variant === "dark" ? "rgba(21, 42, 58, 1)" : "white"};
   color: white;

@@ -7,6 +7,8 @@ const useStore = create((set) => ({
   searchQuery: "",
   error: null,
   loading: false,
+  characterDetail: null,
+  locationDetail: null,
   fetchData: async (url) => {
     set({ loading: true, error: null });
     try {
@@ -19,6 +21,29 @@ const useStore = create((set) => ({
   },
   setSearchQuery: (query) => {
     set({ searchQuery: query });
+  },
+  fetchCharacterDetail: async (id) => {
+    set({ loading: true, error: null });
+    try {
+      const response = await axios.get(
+        `https://rickandmortyapi.com/api/character/${id}`
+      );
+      set({ characterDetail: response.data, loading: false });
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
+  },
+
+  fetchLocationDetail: async (id) => {
+    set({ loading: true, error: null });
+    try {
+      const response = await axios.get(
+        `https://rickandmortyapi.com/api/location/${id}`
+      );
+      set({ locationDetail: response.data, loading: false });
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
   },
 
   setFilterData: (query) => {

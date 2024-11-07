@@ -2,8 +2,8 @@ import styled from "styled-components";
 const mobileSize = 768;
 export const CardContainer = styled.div`
   overflow: hidden;
-  width: 550px;
-  height: 450px;
+  width: 400px;
+  height: 350px;
   border-radius: 10px;
   background-color: rgba(21, 42, 58, 1);
   @media (max-width: ${mobileSize}px) {

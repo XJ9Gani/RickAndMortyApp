@@ -38,7 +38,6 @@ export const CardTitle = styled.h1`
 `;
 
 export const CardText = styled.h3`
-  margin: 1px;
   font-family: sans-serif;
   color: ${(props) =>
     props.variant === "Alive"
@@ -56,8 +55,10 @@ export const SimpleText = styled.h4`
   font-size: 25px;
   color: rgba(110, 121, 140, 1);
   font-family: sans-serif;
+  margin: 1px;
   @media (max-width: ${mobileSize}px) {
     font-size: ${(props) => props.size || "24px"};
     width: $ ${(props) => props.width || "100vw"};
+    margin: 1px;
   }
 `;

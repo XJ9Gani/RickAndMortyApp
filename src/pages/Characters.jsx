@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import useStore from "../store";
 import NoFoundPick from "../Assets/NoFoundPick.png";
 import { SearchForm } from "../components";
+import { NavLink } from "react-router-dom";
 import {
   ListContainer,
   SimpleContainer,
@@ -19,8 +20,9 @@ import { NotFoundImg } from "../styles/NotFound";
 import { CharacterPageIconStyle } from "../styles/Icon";
 import { CharPageIcon } from "../Icon/CharactePageIcons";
 import { useDebouncer } from "../use-hook";
-
+import { Button, ButtonContainer } from "../styles/Button";
 export default function Characters() {
+  const [page, setPage] = useState(1);
   const [order, setOrder] = useState(false);
   const {
     data,
@@ -34,11 +36,18 @@ export default function Characters() {
 
   const debouncedSearchQuery = useDebouncer(searchQuery, 500);
   useEffect(() => {
-    fetchData("https://rickandmortyapi.com/api/character");
-  }, [fetchData]);
+    fetchData(`https://rickandmortyapi.com/api/character/?page=${page}`);
+  }, [fetchData, page]);
   useEffect(() => {
     setFilterData(debouncedSearchQuery);
   }, [debouncedSearchQuery, setFilterData]);
+
+  const getPrevPage = useCallback(() => {
+    setPage(page - 1);
+  }, [page]);
+  const getNextPage = useCallback(() => {
+    setPage(page + 1);
+  }, [page]);
 
   const toggleOrder = () => {
     setOrder((prev) => !prev);
@@ -49,7 +58,7 @@ export default function Characters() {
   return (
     <>
       <SearchForm title="Найти персонажа" />
-      <SimpleText width="12px">всего персонажей: 200</SimpleText>
+      <SimpleText width="12px">Char count: {filterData.length}</SimpleText>
 
       {filterData.length !== 0 ? (
         <>
@@ -61,11 +70,13 @@ export default function Characters() {
           <ListContainer order={order ? "byOne" : "default"}>
             {filterData.map((el) => (
               <CardContainer key={el.id} order={order ? "byOne" : "default"}>
-                <CardImg
-                  src={el.image}
-                  alt={el.name}
-                  order={order ? "byOne" : "default"}
-                />
+                <NavLink to={`/characters/${el.id}`}>
+                  <CardImg
+                    src={el.image}
+                    alt={el.name}
+                    order={order ? "byOne" : "default"}
+                  />
+                </NavLink>
                 <CardBody order={order ? "byOne" : "default"}>
                   <CardText variant={el.status}>{el.status}</CardText>
                   <CardTitle>{el.name}</CardTitle>
@@ -76,6 +87,14 @@ export default function Characters() {
               </CardContainer>
             ))}
           </ListContainer>
+          <ButtonContainer>
+            <Button left="20%" onClick={getPrevPage} disabled={page <= 1}>
+              ↩
+            </Button>
+            <Button right="20%" onClick={getNextPage} disabled={page >= 42}>
+              ↪
+            </Button>
+          </ButtonContainer>
         </>
       ) : (
         <EmptyDataContainer>

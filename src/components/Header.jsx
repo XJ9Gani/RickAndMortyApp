@@ -29,7 +29,7 @@ export default function Header() {
     <>
       <HeaderStyle variant="dark">
         <NavContainer>
-          <NavLink to="/" style={activeLinkHandler}>
+          <NavLink to="/characters" style={activeLinkHandler}>
             <NavItem>
               <HeaderStyleIconStyle>
                 {HeaderIcons.charIcon}

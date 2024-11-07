@@ -25,7 +25,7 @@ export const SimpleContainer = styled.div`
 
 export const BackContainer = styled.div`
   background-color: rgba(11, 30, 45, 1);
-  padding: 10px;
+
   min-height: 100vh;
 `;
 
