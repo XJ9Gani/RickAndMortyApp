@@ -39,7 +39,7 @@ export const LocationImg = styled.img`
 export const LocationName = styled.h1`
   margin: 0;
   text-align: center;
-  font-family: Roboto;
+  font-family: sans-serif;
   font-size: 34px;
   font-weight: 400;
   line-height: 40px;
@@ -51,7 +51,7 @@ export const LocationName = styled.h1`
 
 export const LocationDimension = styled.h3`
   text-align: center;
-  font-family: Roboto;
+  font-family: sans-serif;
   color: rgba(91, 105, 117, 1);
   @media (max-width: ${mobileSize}px) {
     font-size: 12px;
@@ -123,7 +123,7 @@ export const ResidentsBody = styled.div`
 `;
 export const ResidentsStatus = styled.h3`
   text-align: center;
-  font-family: Roboto;
+  font-family: sans-serif;
   color: ${(props) =>
     props.variant === "Alive"
       ? "rgba(67, 208, 73, 1)"

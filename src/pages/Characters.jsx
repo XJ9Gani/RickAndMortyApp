@@ -58,7 +58,9 @@ export default function Characters() {
   return (
     <>
       <SearchForm title="Найти персонажа" />
-      <SimpleText width="12px">Char count: {filterData.length}</SimpleText>
+      <SimpleText width="12px">
+        Characters count: {filterData.length}
+      </SimpleText>
 
       {filterData.length !== 0 ? (
         <>
@@ -89,10 +91,10 @@ export default function Characters() {
           </ListContainer>
           <ButtonContainer>
             <Button left="20%" onClick={getPrevPage} disabled={page <= 1}>
-              ↩
+              {`<`}
             </Button>
             <Button right="20%" onClick={getNextPage} disabled={page >= 42}>
-              ↪
+              {`>`}
             </Button>
           </ButtonContainer>
         </>

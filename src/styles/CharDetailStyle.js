@@ -33,7 +33,7 @@ export const CharacterImg = styled.img`
 export const CharacterName = styled.h1`
   margin: 0;
   text-align: center;
-  font-family: Roboto;
+  font-family: sans-serif;
   font-size: 34px;
   font-weight: 400;
   line-height: 40px;
@@ -41,7 +41,7 @@ export const CharacterName = styled.h1`
 `;
 export const CharacterStatus = styled.h3`
   text-align: center;
-  font-family: Roboto;
+  font-family: sans-serif;
   color: ${(props) =>
     props.variant === "Alive"
       ? "rgba(67, 208, 73, 1)"
@@ -82,4 +82,55 @@ export const CharacterInfoSubText = styled.span`
   @media (max-width: ${mobileSize}px) {
     font-size: 20px;
   }
+`;
+
+export const ActedEpisodContainer = styled.div`
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  @media (max-width: ${mobileSize}px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const ActedEpisodCardContainer = styled.div`
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media (max-width: ${mobileSize}px) {
+    flex-direction: row;
+  }
+`;
+
+export const ActedEpisodImg = styled.img`
+  width: 150px;
+  height: 152px;
+  background-color: white;
+  border-radius: 50%;
+  @media (max-width: ${mobileSize}px) {
+    width: 74px;
+    height: 74px;
+  }
+`;
+
+export const ActedEpisodName = styled.h1`
+  margin: 1px;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  @media (max-width: ${mobileSize}px) {
+    font-size: 18px;
+    width: 151px;
+  }
+`;
+
+export const ActedEpisodBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 `;

@@ -7,6 +7,14 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0; 
   }
+    ::-webkit-scrollbar {
+   background-color:rgb(1, 1, 37);
+}
+    ::-webkit-scrollbar-thumb {
+   background-color:rgb(5, 5, 100);
+   height:10px;
+    
+}
 `;
 
 export const SimpleContainer = styled.div`
@@ -24,7 +32,8 @@ export const SimpleContainer = styled.div`
 `;
 
 export const BackContainer = styled.div`
-  background-color: rgba(11, 30, 45, 1);
+  background-color: ${(props) =>
+    props.state === "light" ? "white" : "rgba(11, 30, 45, 1)"};
 
   min-height: 100vh;
 `;

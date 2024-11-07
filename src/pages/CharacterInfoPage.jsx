@@ -11,29 +11,39 @@ import {
   CharacterInfo,
   CharacterInfoText,
   CharacterInfoSubText,
+  ActedEpisodContainer,
+  ActedEpisodCardContainer,
+  ActedEpisodImg,
+  ActedEpisodName,
+  ActedEpisodBody,
 } from "../styles/CharDetailStyle";
 import axios from "axios";
-
 export default function CharacterInfoPage() {
   const { id } = useParams();
+  const [episodes, setEpisodes] = useState([]);
   const { characterDetail, fetchCharacterDetail, loading, error } = useStore();
-  const [location, setLocation] = useState(null);
   useEffect(() => {
     fetchCharacterDetail(id);
   }, [id, fetchCharacterDetail]);
 
-  // useEffect(() => {
-  //   async function fetchLocation() {
-  //     const locationUrls = characterDetail.origin.url;
-
-  //     const locationResponses = await Promise.all(
-  //       locationUrls.map((url) => axios.get(url))
-  //     );
-  //     const locationData = locationResponses.data;
-  //     console.log(locationData);
-  //   }
-  //   fetchLocation();
-  // }, []);
+  useEffect(() => {
+    const allEpisodes = [];
+    async function fetchEpisodes() {
+      try {
+        const episodePromises = characterDetail.episode.map((url) =>
+          axios.get(url)
+        );
+        const episodeResponses = await Promise.all(episodePromises);
+        const episodeData = episodeResponses.map((response) => response.data);
+        allEpisodes.push(...episodeData);
+        setEpisodes(allEpisodes);
+        console.log(episodes);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    fetchEpisodes();
+  }, [characterDetail]);
 
   if (loading) return <>Loading...</>;
   if (error) return <>Error: {error}</>;
@@ -65,17 +75,23 @@ export default function CharacterInfoPage() {
           <CharacterInfoText>
             <CharacterInfoSubText>Matherland</CharacterInfoSubText>
             {characterDetail.origin.name}
-            {/* <NavLink>{location.name}</NavLink> */}
           </CharacterInfoText>
-          {/* <CharacterInfoText>
-            <CharacterInfoSubText>Location</CharacterInfoSubText>
-            {characterDetail.location.name}
-          </CharacterInfoText> */}
+
           <CharacterInfoText>
             <CharacterInfoSubText>Race</CharacterInfoSubText>
             {characterDetail.species}
           </CharacterInfoText>
         </CharacterInfo>
+        <ActedEpisodContainer>
+          {episodes.map((el) => (
+            <ActedEpisodCardContainer>
+              <ActedEpisodImg src={characterDetail.image} />
+              <ActedEpisodBody>
+                <ActedEpisodName>{el.name}</ActedEpisodName>
+              </ActedEpisodBody>
+            </ActedEpisodCardContainer>
+          ))}
+        </ActedEpisodContainer>
       </CharacterBody>
     </>
   );

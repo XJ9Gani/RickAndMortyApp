@@ -12,11 +12,12 @@ export const SearchInput = styled.input`
   margin-top: 10px;
   margin-bottom: 1%;
   border-radius: 50px;
-  border: none;
+  border: 1px solid black;
   font-size: 30px;
   font-family: sans-serif;
   color: rgba(91, 105, 117, 1);
-  background-color: rgba(21, 42, 58, 1);
+  background-color: ${(props) =>
+    props.state === "dark" ? "white" : " rgba(21, 42, 58, 1)"};
   padding: 10px;
   @media (max-width: ${mobileSize}px) {
     width: 70%;

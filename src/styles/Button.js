@@ -26,3 +26,18 @@ export const Button = styled.button`
     height: 50px;
   }
 `;
+
+export const ChangeThemeButton = styled.button`
+  position: fixed;
+  z-index: 3;
+  top: 15%;
+  left: 5%;
+  border: 5px solid black;
+  background-color: gray;
+  width: 100px;
+  height: 50px;
+  border-radius: 50px;
+  @media (max-width: ${mobileSize}px) {
+    top: 5%;
+  }
+`;

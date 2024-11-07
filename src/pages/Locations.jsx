@@ -73,10 +73,10 @@ export default function Locations() {
           </ListContainer>
           <ButtonContainer>
             <Button left="20%" onClick={getPrevPage} disabled={page <= 1}>
-              ↩
+              {`<`}
             </Button>
             <Button right="20%" onClick={getNextPage} disabled={page >= 7}>
-              ↪
+              {`>`}
             </Button>
           </ButtonContainer>
         </>

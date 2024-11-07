@@ -1,5 +1,6 @@
 import { SearchInput, FormContainer } from "../styles/Input";
 import useStore from "../store";
+import { useTheme } from "../use-hook";
 export default function SearchForm({ title }) {
   const { setSearchQuery } = useStore();
 

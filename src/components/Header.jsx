@@ -2,9 +2,10 @@ import { NavLink } from "react-router-dom";
 import { HeaderStyle, NavContainer, NavItem } from "../styles/Header";
 import { HeaderStyleIconStyle } from "../styles/Icon";
 import { HeaderIcons } from "../Icon/HeaderIcons";
-
+import { useTheme } from "../use-hook";
 import { useCallback } from "react";
 export default function Header() {
+  const [theme, toggleTheme] = useTheme();
   const activeLinkHandler = useCallback(
     ({ isActive }) =>
       isActive
@@ -16,18 +17,9 @@ export default function Header() {
     []
   );
 
-  const activeIcon = useCallback(
-    ({ isActive }) =>
-      isActive
-        ? {
-            backgroundColor: "green", // Стиль для активной иконки
-          }
-        : { backgroundColor: "" }, // Отсутствие фона для неактивной иконки
-    []
-  );
   return (
     <>
-      <HeaderStyle variant="dark">
+      <HeaderStyle state={theme}>
         <NavContainer>
           <NavLink to="/characters" style={activeLinkHandler}>
             <NavItem>

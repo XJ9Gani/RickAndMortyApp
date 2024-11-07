@@ -5,8 +5,7 @@ export const HeaderStyle = styled.header`
   margin: 0;
   padding: 10px;
   z-index: 2;
-  background-color: ${(props) =>
-    props.variant === "dark" ? "rgba(21, 42, 58, 1)" : "white"};
+  background-color: rgba(21, 42, 58, 1);
   color: white;
   text-aling: center;
   @media (max-width: ${mobileSize}px) {
