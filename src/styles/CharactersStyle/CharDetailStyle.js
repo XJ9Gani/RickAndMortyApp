@@ -14,7 +14,8 @@ export const BlurredPick = styled.div`
 `;
 
 export const CharacterBody = styled.div`
-  border: 5px solid rgba(11, 30, 45, 1);
+  background-color: ${(props) =>
+    props.state === "light" ? "white" : "rgba(11, 30, 45, 1)"};
   position: relative;
   z-index: 0;
   min-height: 100vh;
@@ -24,7 +25,8 @@ export const CharacterImg = styled.img`
   margin: auto;
   transform: translateY(-40%);
   border-radius: 50%;
-  border: 10px solid rgba(11, 30, 45, 1);
+  border: 10px solid
+    ${(props) => (props.state === "light" ? "white" : "rgba(11, 30, 45, 1)")};
   @media (max-width: ${mobileSize}px) {
     width: 166px;
     height: 166px;
@@ -36,8 +38,8 @@ export const CharacterName = styled.h1`
   font-family: sans-serif;
   font-size: 34px;
   font-weight: 400;
-  line-height: 40px;
-  color: white;
+  transition: 0.4s;
+  color: ${(props) => (props.state === "light" ? "black" : "white")};
 `;
 export const CharacterStatus = styled.h3`
   text-align: center;
@@ -62,16 +64,17 @@ export const CharacterInfo = styled.div`
   }
 `;
 export const CharacterDecription = styled.h2`
+  color: ${(props) => (props.state === "light" ? "black" : "white")};
   font-weight: 400;
   font-size: 30px;
-  color: rgba(255, 255, 255, 1);
   font-family: sans-serif;
   @media (max-width: ${mobileSize}px) {
     font-size: 13px;
   }
 `;
 export const CharacterInfoText = styled.h2`
-  color: rgba(255, 255, 255, 1);
+  color: ${(props) => (props.state === "light" ? "black" : "white")};
+
   font-family: sans-serif;
 `;
 export const CharacterInfoSubText = styled.span`
@@ -120,7 +123,7 @@ export const ActedEpisodImg = styled.img`
 
 export const ActedEpisodName = styled.h1`
   margin: 1px;
-  color: white;
+  color: ${(props) => (props.state === "light" ? "black" : "white")};
   text-align: center;
   font-family: sans-serif;
   @media (max-width: ${mobileSize}px) {

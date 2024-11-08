@@ -1,6 +1,5 @@
 import axios from "axios";
 import { create } from "zustand";
-
 const useStore = create((set) => ({
   data: [],
   filterData: [],
@@ -9,6 +8,7 @@ const useStore = create((set) => ({
   loading: false,
   characterDetail: null,
   locationDetail: null,
+  theme: localStorage.getItem("state") || "light",
   fetchData: async (url) => {
     set({ loading: true, error: null });
     try {
@@ -52,6 +52,14 @@ const useStore = create((set) => ({
         item.name.toLowerCase().includes(query.toLowerCase())
       );
       return { filterData: filtered };
+    });
+  },
+  toggleTheme: () => {
+    set((state) => {
+      const nextTheme = state.theme === "light" ? "dark" : "light";
+      localStorage.setItem("state", nextTheme);
+      document.documentElement.setAttribute("data-bs-theme", nextTheme);
+      return { theme: nextTheme };
     });
   },
 }));

@@ -19,12 +19,14 @@ import {
   ResidentsTitle,
   ResidentsStatus,
   ResidentsBody,
+  ResidentInfo,
 } from "../styles/LocationsStyle/LocationDetailStyle";
 import axios from "axios";
 export default function LocationInfoPage() {
   const [residents, setResidents] = useState([]);
   const { id } = useParams();
-  const { locationDetail, fetchLocationDetail, loading, error } = useStore();
+  const { locationDetail, fetchLocationDetail, loading, error, theme } =
+    useStore();
 
   const imagePlacer = (id) => {
     if (id % 2 === 0) {
@@ -70,20 +72,20 @@ export default function LocationInfoPage() {
         alt={locationDetail.name}
       ></BackPick>
 
-      <LocationBody>
-        <LocationImg src={imagePlacer(locationDetail.id)} />
-        <LocationName>{locationDetail.name}</LocationName>
+      <LocationBody state={theme}>
+        <LocationImg state={theme} src={imagePlacer(locationDetail.id)} />
+        <LocationName state={theme}>{locationDetail.name}</LocationName>
         <LocationDimension>
           {locationDetail.type} | {locationDetail.dimension}
         </LocationDimension>
-        <LocationDecription>
+        <LocationDecription state={theme}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
           voluptates, labore, est voluptate unde suscipit fuga, amet sint atque
           similique tempora quia! Delectus officia a dolor, hic sunt
           consequuntur beatae.
         </LocationDecription>
         <ResidentsContainer>
-          <ResidentsTitle>RESIDENTS</ResidentsTitle>
+          <ResidentsTitle state={theme}>RESIDENTS</ResidentsTitle>
           {residents.map((el) => (
             <NavLink
               to={`/characters/${el.id}`}
@@ -96,7 +98,10 @@ export default function LocationInfoPage() {
                   <ResidentsStatus variant={el.status}>
                     {el.status}
                   </ResidentsStatus>
-                  <ResidentsName>{el.name}</ResidentsName>
+                  <ResidentsName state={theme}>{el.name}</ResidentsName>
+                  <ResidentInfo size="10px" state={theme}>
+                    {el.species} , {el.gender}
+                  </ResidentInfo>
                 </ResidentsBody>
               </ResidentsCardContainer>
             </NavLink>

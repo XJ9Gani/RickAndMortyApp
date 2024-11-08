@@ -16,12 +16,13 @@ import {
   ActedEpisodImg,
   ActedEpisodName,
   ActedEpisodBody,
-} from "../styles/CharDetailStyle";
+} from "../styles/CharactersStyle/CharDetailStyle";
 import axios from "axios";
 export default function CharacterInfoPage() {
   const { id } = useParams();
   const [episodes, setEpisodes] = useState([]);
-  const { characterDetail, fetchCharacterDetail, loading, error } = useStore();
+  const { characterDetail, fetchCharacterDetail, loading, error, theme } =
+    useStore();
   useEffect(() => {
     fetchCharacterDetail(id);
   }, [id, fetchCharacterDetail]);
@@ -55,29 +56,29 @@ export default function CharacterInfoPage() {
         src={characterDetail.image}
         alt={characterDetail.name}
       ></BlurredPick>
-      <CharacterBody>
-        <CharacterImg src={characterDetail.image} />
-        <CharacterName>{characterDetail.name}</CharacterName>
+      <CharacterBody state={theme}>
+        <CharacterImg state={theme} src={characterDetail.image} />
+        <CharacterName state={theme}>{characterDetail.name}</CharacterName>
         <CharacterStatus variant={characterDetail.status}>
           {characterDetail.status}
         </CharacterStatus>
-        <CharacterDecription>
+        <CharacterDecription state={theme}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo minima
           debitis praesentium obcaecati, cupiditate magni placeat ipsum eos
           fugiat tempora animi cumque molestias quaerat voluptatibus repudiandae
           incidunt. Obcaecati, mollitia similique.
         </CharacterDecription>
         <CharacterInfo>
-          <CharacterInfoText>
+          <CharacterInfoText state={theme}>
             <CharacterInfoSubText>Gender</CharacterInfoSubText>
             {characterDetail.gender}
           </CharacterInfoText>
-          <CharacterInfoText>
+          <CharacterInfoText state={theme}>
             <CharacterInfoSubText>Matherland</CharacterInfoSubText>
             {characterDetail.origin.name}
           </CharacterInfoText>
 
-          <CharacterInfoText>
+          <CharacterInfoText state={theme}>
             <CharacterInfoSubText>Race</CharacterInfoSubText>
             {characterDetail.species}
           </CharacterInfoText>
@@ -87,7 +88,7 @@ export default function CharacterInfoPage() {
             <ActedEpisodCardContainer>
               <ActedEpisodImg src={characterDetail.image} />
               <ActedEpisodBody>
-                <ActedEpisodName>{el.name}</ActedEpisodName>
+                <ActedEpisodName state={theme}>{el.name}</ActedEpisodName>
               </ActedEpisodBody>
             </ActedEpisodCardContainer>
           ))}

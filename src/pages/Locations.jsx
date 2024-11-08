@@ -1,12 +1,12 @@
 import { useEffect, useCallback, useState } from "react";
 import useStore from "../store";
 import { SearchForm } from "../components";
-import { ListContainer } from "../styles/Container";
 import { SimpleText } from "../styles/Card";
 import { EmptyDataContainer } from "../styles/Container";
 import { NotFoundImg } from "../styles/NotFound";
 import NoFoundLocation from "../Assets/NoFoundLocation.png";
 import { Button, ButtonContainer } from "../styles/Button";
+import { ArrowIcon } from "../Icon/ArrowIcon";
 import { NavLink } from "react-router-dom";
 import {
   CardBody,
@@ -14,14 +14,22 @@ import {
   CardHeader,
   CardTitle,
   CardText,
+  LocationListContainer,
 } from "../styles/LocationsStyle/LocationCard";
 import { useDebouncer } from "../use-hook";
 import location1 from "../Assets/Location1.png";
 import location2 from "../Assets/Location2.png";
 import location3 from "../Assets/Location3.jpg";
 export default function Locations() {
-  const { loading, error, fetchData, filterData, searchQuery, setFilterData } =
-    useStore();
+  const {
+    loading,
+    error,
+    fetchData,
+    filterData,
+    searchQuery,
+    setFilterData,
+    theme,
+  } = useStore();
   const [page, setPage] = useState(1);
 
   const getPrevPage = useCallback(() => {
@@ -53,30 +61,42 @@ export default function Locations() {
   return (
     <>
       <SearchForm title="Search location" />
-      <SimpleText width="12px">Locations count: {filterData.length}</SimpleText>
+      <SimpleText state={theme} width="12px">
+        Locations count: {filterData.length}
+      </SimpleText>
       {filterData.length !== 0 ? (
         <>
-          <ListContainer order="byOne">
+          <LocationListContainer order="byOne">
             {filterData.map((el) => (
-              <CardContainer key={el.id}>
+              <CardContainer key={el.id} state={theme}>
                 <NavLink to={`/location/${el.id}`}>
                   <CardHeader src={imagePlacer(el.id)}></CardHeader>
                 </NavLink>
                 <CardBody>
-                  <CardTitle>{el.name}</CardTitle>
+                  <CardTitle state={theme}>{el.name}</CardTitle>
                   <CardText>
                     {el.type} | {el.dimension}
                   </CardText>
                 </CardBody>
               </CardContainer>
             ))}
-          </ListContainer>
+          </LocationListContainer>
           <ButtonContainer>
-            <Button left="20%" onClick={getPrevPage} disabled={page <= 1}>
-              {`<`}
+            <Button
+              state={theme}
+              left="20%"
+              onClick={getPrevPage}
+              disabled={page <= 1}
+            >
+              {ArrowIcon.prevPageIcon}
             </Button>
-            <Button right="20%" onClick={getNextPage} disabled={page >= 7}>
-              {`>`}
+            <Button
+              state={theme}
+              right="20%"
+              onClick={getNextPage}
+              disabled={page >= 7}
+            >
+              {ArrowIcon.nextPageIcon}
             </Button>
           </ButtonContainer>
         </>

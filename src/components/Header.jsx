@@ -2,10 +2,8 @@ import { NavLink } from "react-router-dom";
 import { HeaderStyle, NavContainer, NavItem } from "../styles/Header";
 import { HeaderStyleIconStyle } from "../styles/Icon";
 import { HeaderIcons } from "../Icon/HeaderIcons";
-import { useTheme } from "../use-hook";
-import { useCallback } from "react";
-export default function Header() {
-  const [theme, toggleTheme] = useTheme();
+import { useCallback, useEffect } from "react";
+export default function Header({ state }) {
   const activeLinkHandler = useCallback(
     ({ isActive }) =>
       isActive
@@ -16,10 +14,12 @@ export default function Header() {
         : { textDecoration: "none", color: "rgba(110, 121, 140, 1)" },
     []
   );
-
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
   return (
     <>
-      <HeaderStyle state={theme}>
+      <HeaderStyle state={state}>
         <NavContainer>
           <NavLink to="/characters" style={activeLinkHandler}>
             <NavItem>

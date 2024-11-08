@@ -3,16 +3,22 @@ import { BackContainer, GlobalStyle } from "./styles/Container";
 import { ChangeThemeButton } from "./styles/Button";
 import { Header, AppRouter } from "./components";
 import { useTheme } from "./use-hook";
+import { ThemeIcon } from "./Icon/ThemeIcon";
+import useStore from "./store";
 function App() {
-  const [theme, toggleTheme] = useTheme();
+  const { theme, toggleTheme } = useStore();
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle state={theme} />
       <BrowserRouter>
-        <Header />
+        <Header state={theme} />
 
         <BackContainer state={theme}>
-          <ChangeThemeButton onClick={toggleTheme}>{theme}</ChangeThemeButton>
+          <ChangeThemeButton state={theme} onClick={toggleTheme}>
+            {theme === "dark"
+              ? ThemeIcon.lightThemeIcon
+              : ThemeIcon.darkThemeIcon}
+          </ChangeThemeButton>
           <AppRouter />
         </BackContainer>
       </BrowserRouter>

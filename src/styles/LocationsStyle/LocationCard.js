@@ -1,11 +1,31 @@
 import styled from "styled-components";
 const mobileSize = 768;
+
+export const LocationListContainer = styled.div`
+  margin: auto;
+  width: 85%;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  @media (max-width: ${mobileSize}px) {
+    width: 90%;
+    margin: auto;
+    grid-template-columns: ${(props) =>
+      props.order === "byOne" ? "1fr" : "1fr 1fr"};
+    margin-bottom: 60px;
+  }
+`;
+
 export const CardContainer = styled.div`
   overflow: hidden;
   width: 400px;
   height: 350px;
   border-radius: 10px;
-  background-color: rgba(21, 42, 58, 1);
+  box-shadow: 0 0 6px 1px black;
+  border: ${(props) => (props.state === "light" ? "1px solid black" : "none")};
+  background-color: ${(props) =>
+    props.state === "light" ? "white" : "rgba(21, 42, 58, 1)"};
   @media (max-width: ${mobileSize}px) {
     margin: auto;
     width: 343px;
@@ -26,24 +46,23 @@ export const CardBody = styled.div`
   padding: 10px;
 `;
 
-export const CardTitle = styled.h1`
+export const CardTitle = styled.h2`
   margin: 0;
-
   font-size: 30px;
   font-family: sans-serif;
-  color: white;
-  @media (max-width: ${mobileSize}) {
-    font-size: 30px;
+  color: ${(props) => (props.state === "light" ? "black" : "white")};
+  @media (max-width: ${mobileSize}px) {
+    font-size: 25px;
   }
 `;
 
 export const CardText = styled.h4`
   margin-top: 5px;
   width: 80vw;
-  font-size: 20px;
+  font-size: 18px;
   font-family: sans-serif;
   color: rgba(110, 121, 140, 1);
-  @media (max-width: ${mobileSize}) {
+  @media (max-width: ${mobileSize}px) {
     font-size: 12px;
   }
 `;

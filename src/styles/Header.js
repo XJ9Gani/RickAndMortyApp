@@ -3,10 +3,13 @@ import styled from "styled-components";
 const mobileSize = 768;
 export const HeaderStyle = styled.header`
   margin: 0;
+  transition: 0.4s;
   padding: 10px;
   z-index: 2;
-  background-color: rgba(21, 42, 58, 1);
+  background-color: ${(props) =>
+    props.state === "light" ? "white" : "rgba(21, 42, 58, 1)"};
   color: white;
+  box-shadow: 0 0 10px 1px #1a1a1a;
   text-aling: center;
   @media (max-width: ${mobileSize}px) {
     width: 100%;

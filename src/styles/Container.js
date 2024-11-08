@@ -8,12 +8,13 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0; 
   }
     ::-webkit-scrollbar {
-   background-color:rgb(1, 1, 37);
+   background-color:${(props) => (props.state === "light" ? "grey" : "black")};
 }
     ::-webkit-scrollbar-thumb {
-   background-color:rgb(5, 5, 100);
+   background-color: ${(props) =>
+     props.state === "light" ? "white" : "rgb(5, 5, 100)"};
    height:10px;
-    
+   
 }
 `;
 

@@ -3,24 +3,23 @@ import useStore from "../store";
 import NoFoundPick from "../Assets/NoFoundPick.png";
 import { SearchForm } from "../components";
 import { NavLink } from "react-router-dom";
-import {
-  ListContainer,
-  SimpleContainer,
-  EmptyDataContainer,
-} from "../styles/Container";
-import {
-  CardContainer,
-  CardImg,
-  CardTitle,
-  CardText,
-  CardBody,
-  SimpleText,
-} from "../styles/Card";
+import { SimpleContainer, EmptyDataContainer } from "../styles/Container";
+import { SimpleText } from "../styles/Card";
 import { NotFoundImg } from "../styles/NotFound";
 import { CharacterPageIconStyle } from "../styles/Icon";
 import { CharPageIcon } from "../Icon/CharactePageIcons";
 import { useDebouncer } from "../use-hook";
 import { Button, ButtonContainer } from "../styles/Button";
+import { ArrowIcon } from "../Icon/ArrowIcon";
+import {
+  CharacterCardContainer,
+  CharacterImg,
+  CharacterBody,
+  CharacterListContainer,
+  CardText,
+  CardStatus,
+  CardTitle,
+} from "../styles/CharactersStyle/CharacterStyle";
 export default function Characters() {
   const [page, setPage] = useState(1);
   const [order, setOrder] = useState(false);
@@ -32,6 +31,7 @@ export default function Characters() {
     filterData,
     searchQuery,
     setFilterData,
+    theme,
   } = useStore();
 
   const debouncedSearchQuery = useDebouncer(searchQuery, 500);
@@ -53,12 +53,17 @@ export default function Characters() {
     setOrder((prev) => !prev);
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <h1 style={{ textAlign: "center", fontSize: "30px", marginTop: "100px" }}>
+        Loading...
+      </h1>
+    );
   if (error) return <div>Error: {error}</div>;
   return (
     <>
-      <SearchForm title="Найти персонажа" />
-      <SimpleText width="12px">
+      <SearchForm title="Search Character" />
+      <SimpleText state={theme} width="12px">
         Characters count: {filterData.length}
       </SimpleText>
 
@@ -69,32 +74,45 @@ export default function Characters() {
               {order ? CharPageIcon.orderIcon1 : CharPageIcon.orderIcon2}
             </CharacterPageIconStyle>
           </SimpleContainer>
-          <ListContainer order={order ? "byOne" : "default"}>
+          <CharacterListContainer order={order ? "byOne" : "default"}>
             {filterData.map((el) => (
-              <CardContainer key={el.id} order={order ? "byOne" : "default"}>
+              <CharacterCardContainer
+                key={el.id}
+                order={order ? "byOne" : "default"}
+              >
                 <NavLink to={`/characters/${el.id}`}>
-                  <CardImg
+                  <CharacterImg
                     src={el.image}
                     alt={el.name}
                     order={order ? "byOne" : "default"}
                   />
                 </NavLink>
-                <CardBody order={order ? "byOne" : "default"}>
-                  <CardText variant={el.status}>{el.status}</CardText>
-                  <CardTitle>{el.name}</CardTitle>
-                  <SimpleText size="12px">
+                <CharacterBody order={order ? "byOne" : "default"}>
+                  <CardStatus variant={el.status}>{el.status}</CardStatus>
+                  <CardTitle state={theme}>{el.name}</CardTitle>
+                  <CardText size="12px">
                     {el.species} , {el.gender}
-                  </SimpleText>
-                </CardBody>
-              </CardContainer>
+                  </CardText>
+                </CharacterBody>
+              </CharacterCardContainer>
             ))}
-          </ListContainer>
+          </CharacterListContainer>
           <ButtonContainer>
-            <Button left="20%" onClick={getPrevPage} disabled={page <= 1}>
-              {`<`}
+            <Button
+              left="20%"
+              onClick={getPrevPage}
+              disabled={page <= 1}
+              state={theme}
+            >
+              {ArrowIcon.prevPageIcon}
             </Button>
-            <Button right="20%" onClick={getNextPage} disabled={page >= 42}>
-              {`>`}
+            <Button
+              right="20%"
+              onClick={getNextPage}
+              disabled={page >= 42}
+              state={theme}
+            >
+              {ArrowIcon.nextPageIcon}
             </Button>
           </ButtonContainer>
         </>

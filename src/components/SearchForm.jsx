@@ -2,7 +2,7 @@ import { SearchInput, FormContainer } from "../styles/Input";
 import useStore from "../store";
 import { useTheme } from "../use-hook";
 export default function SearchForm({ title }) {
-  const { setSearchQuery } = useStore();
+  const { setSearchQuery, theme } = useStore();
 
   const handleChange = (event) => {
     setSearchQuery(event.target.value);
@@ -13,7 +13,7 @@ export default function SearchForm({ title }) {
   };
   return (
     <FormContainer onSubmit={handleSubmit}>
-      <SearchInput placeholder={title} onChange={handleChange} />
+      <SearchInput placeholder={title} state={theme} onChange={handleChange} />
     </FormContainer>
   );
 }

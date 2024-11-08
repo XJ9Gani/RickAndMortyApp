@@ -6,12 +6,10 @@ export default function useTheme() {
   useEffect(() => {
     document.documentElement.setAttribute("data-bs-theme", state);
     localStorage.setItem("state", state);
-  }, []);
+  }, [state]);
 
   const handleState = () => {
     const nextState = state === "light" ? "dark" : "light";
-    localStorage.setItem("state", nextState);
-    document.documentElement.setAttribute("data-bs-theme", nextState);
     setState(nextState);
   };
 
